@@ -1,0 +1,24 @@
+{
+  "generator-react-firebase": {
+    "promptValues": {
+      "githubUser": "raulingg",
+      "firebaseName": "g2g-app-72a17",
+      "firebaseKey": "AIzaSyA-uPPQtqlKxkJB8_BVLD6TyChXEZHWuhE",
+      "includeRedux": true,
+      "includeFirestore": true,
+      "otherFeatures": [
+        "Continuous Integration config",
+        "Firebase Cloud Messaging",
+        "Firebase Functions (with ESNext support)",
+        "Tests for Firebase Functions (Mocha + Chai)",
+        "Google Analytics (react-ga)",
+        "Error Tracking (Sentry.io)",
+        "Client Side Error Reporting (Stackdriver)"
+      ],
+      "messagingSenderId": "1033728210093",
+      "firebasePublicVapidKey": "BDoyL_EV1GfoQaAAlFt6Je8HaMRzf_Fi7ZRx4llWyp232RVFVbtHRZX6yh489akF7U3r6L_e_ZjQGyxpCjPEcMo",
+      "ciProvider": "travis",
+      "deployTo": "firebase"
+    }
+  }
+}

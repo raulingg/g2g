@@ -1,0 +1,40 @@
+{
+  "projects": {
+    "default": "g2g-app-72a17",
+    "master": "g2g-app-72a17",
+    "prod": "g2g-app-72a17"
+  },
+  "ci": {
+    "copyVersion": true,
+    "createConfig": {
+      "master": {
+        "env": "staging",
+        "firebase": {
+          "apiKey": "${STG_FIREBASE_API_KEY}",
+          "authDomain": "g2g-app-72a17.firebaseapp.com",
+          "databaseURL": "https://g2g-app-72a17.firebaseio.com",
+          "projectId": "g2g-app-72a17",
+          "storageBucket": "g2g-app-72a17.appspot.com",
+          "messagingSenderId": "1033728210093"
+        },
+        "sentryDsn": "${SENTRY_DSN}",
+        "analyticsTrackingId": "${GA_TRACKING_ID}",
+        "publicVapidKey": "${STG_PUBLIC_VAPID_KEY}"
+      },
+      "prod": {
+        "env": "production",
+        "firebase": {
+          "apiKey": "${PROD_FIREBASE_API_KEY}",
+          "authDomain": "g2g-app-72a17.firebaseapp.com",
+          "databaseURL": "https://g2g-app-72a17.firebaseio.com",
+          "projectId": "g2g-app-72a17",
+          "storageBucket": "g2g-app-72a17.appspot.com",
+          "messagingSenderId": "1033728210093"
+        },
+        "sentryDsn": "${SENTRY_DSN}",
+        "analyticsTrackingId": "${GA_TRACKING_ID}",
+        "publicVapidKey": "${PROD_PUBLIC_VAPID_KEY}"
+      }
+    }
+  }
+}

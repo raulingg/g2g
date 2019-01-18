@@ -1,0 +1,66 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+
+version: 2.1
+
+executors:
+  create-container:
+    docker:
+      - image: circleci/node
+    working_directory: ~/repo
+
+jobs:
+  building:
+    executor: create-container
+    steps:
+      - checkout
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+      - run: yarn install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - run: yarn build:config
+      - run: yarn lint
+      # run tests!
+      - run: yarn test
+      - run: yarn build
+      - run: cd ..
+      - save_cache:
+          paths:
+            - ./
+          key: build-cache-v1-{{ .Environment.CIRCLE_WORKFLOW_ID }}
+
+  deploying:
+    executor: create-container
+    steps:
+      - restore_cache:
+          keys:
+            - build-cache-v1-{{ .Environment.CIRCLE_WORKFLOW_ID }}
+            # fallback to using the latest cache if no exact match is found
+            - build-cache-v1-
+      - run: npx semantic-release
+      - run: yarn add firebase-ci@^0.5.0
+      - run: yarn deploy
+
+workflows:
+  version: 2.1
+
+  g2g:
+    jobs:
+      - building
+      - deploying:
+          # type: approval
+          filters:
+            branches:
+              only:
+                - master
+                - /rc-.*/
+          requires:
+            - building
