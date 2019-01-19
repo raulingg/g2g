@@ -2,7 +2,6 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { get } from 'lodash'
-import { firestoreConnect } from 'react-redux-firebase'
 import { withStyles } from '@material-ui/core/styles'
 import { withRouter } from 'react-router-dom'
 import { setPropTypes, setDisplayName, withProps } from 'recompose'
@@ -28,14 +27,6 @@ export default compose(
   withProps(({ match: { params: { projectId } } }) => ({
     projectId
   })),
-  // Create listeners based on current users UID
-  firestoreConnect(({ projectId }) => [
-    // Listener for projects the current user created
-    {
-      collection: 'projects',
-      doc: projectId
-    }
-  ]),
   // Map projects from state to props
   connect(({ firestore: { data } }, { projectId }) => ({
     project: get(data, `projects.${projectId}`)
