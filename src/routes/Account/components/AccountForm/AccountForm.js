@@ -1,31 +1,54 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Field } from 'redux-form'
 import Button from '@material-ui/core/Button'
-import { TextField } from 'redux-form-material-ui'
+import TextField from '@material-ui/core/TextField'
 import ProviderDataForm from '../ProviderDataForm'
 
 export const AccountForm = ({
   account,
+  values,
+  touched,
+  errors,
+  isSubmitting,
+  handleChange,
+  handleBlur,
   handleSubmit,
-  submitting,
-  pristine,
+  isValid,
   classes
 }) => (
   <form className={classes.root} onSubmit={handleSubmit}>
     <h4>Account</h4>
     <div className={classes.fields}>
-      <Field
-        fullWidth
+      <TextField
+        id="displayName"
         name="displayName"
-        component={TextField}
-        label="Display Name"
+        label="Nombre"
+        onChange={handleChange}
+        onBlur={handleBlur}
+        value={values.displayName}
+        error={touched.displayName && Boolean(errors.displayName)}
+        helperText={errors.displayName}
       />
-      <Field name="email" label="Email" component={TextField} fullWidth />
-      <Field
+      <TextField
+        id="email"
+        label="Email"
+        name="email"
+        type="email"
+        onChange={handleChange}
+        onBlur={handleBlur}
+        value={values.email}
+        error={touched.email && Boolean(errors.email)}
+        helperText={errors.email}
+      />
+      <TextField
+        id="avatarUrl"
         name="avatarUrl"
         label="Avatar Url"
-        component={TextField}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        value={values.avatarUrl}
+        error={touched.avatarUrl && Boolean(errors.avatarUrl)}
+        helperText={errors.avatarUrl}
         fullWidth
       />
     </div>
@@ -35,8 +58,8 @@ export const AccountForm = ({
         <ProviderDataForm providerData={account.providerData} />
       </div>
     )}
-    <Button color="primary" type="submit" disabled={pristine || submitting}>
-      {submitting ? 'Saving' : 'Save'}
+    <Button color="primary" type="submit" disabled={!isValid || isSubmitting}>
+      {isSubmitting ? 'Saving' : 'Save'}
     </Button>
   </form>
 )
@@ -44,9 +67,7 @@ export const AccountForm = ({
 AccountForm.propTypes = {
   account: PropTypes.object,
   classes: PropTypes.object.isRequired, // from enhancer (withStyles)
-  handleSubmit: PropTypes.func.isRequired, // from enhancer (reduxForm)
-  pristine: PropTypes.bool.isRequired, // from enhancer (reduxForm)
-  submitting: PropTypes.bool.isRequired // from enhancer (reduxForm)
+  handleSubmit: PropTypes.func.isRequired // from enhancer (reduxForm - calls onSubmit)
 }
 
 export default AccountForm

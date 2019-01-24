@@ -31,7 +31,7 @@ export default compose(
       firebase
         .login({ provider: 'google', type: 'popup' })
         .catch(err => showError(err.message)),
-    emailSignup: ({ firebase, showError }) => creds =>
+    signUpWithCredentials: ({ firebase, showError }) => creds =>
       firebase
         .createUser(creds, {
           email: creds.email,

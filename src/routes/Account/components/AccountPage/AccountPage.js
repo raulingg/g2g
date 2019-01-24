@@ -16,11 +16,7 @@ const AccountPage = ({ avatarUrl, updateAccount, profile, classes }) => (
           />
         </div>
         <div className={classes.meta}>
-          <AccountForm
-            onSubmit={updateAccount}
-            account={profile}
-            initialValues={profile}
-          />
+          <AccountForm onSubmit={updateAccount} account={profile} />
         </div>
       </div>
     </Paper>

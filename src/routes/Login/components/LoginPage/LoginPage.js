@@ -6,10 +6,10 @@ import Paper from '@material-ui/core/Paper'
 import { SIGNUP_PATH } from 'constants/paths'
 import LoginForm from '../LoginForm'
 
-const LoginPage = ({ emailLogin, googleLogin, onSubmitFail, classes }) => (
+const LoginPage = ({ loginWithCredentials, googleLogin, classes }) => (
   <div className={classes.root}>
     <Paper className={classes.panel}>
-      <LoginForm onSubmit={emailLogin} onSubmitFail={onSubmitFail} />
+      <LoginForm loginWithCredentials={loginWithCredentials} />
     </Paper>
     <div className={classes.orLabel}>or</div>
     <div className={classes.providers}>
@@ -26,8 +26,7 @@ const LoginPage = ({ emailLogin, googleLogin, onSubmitFail, classes }) => (
 
 LoginPage.propTypes = {
   classes: PropTypes.object.isRequired, // from enhancer (withStyles)
-  emailLogin: PropTypes.func.isRequired, // from enhancer (withHandlers)
-  onSubmitFail: PropTypes.func.isRequired, // from enhancer (withHandlers)
+  loginWithCredentials: PropTypes.func.isRequired, // from enhancer (withHandlers)
   googleLogin: PropTypes.func.isRequired // from enhancer (withHandlers)
 }
 

@@ -30,7 +30,7 @@ export default compose(
       firebase
         .login({ provider: 'google', type: 'popup' })
         .catch(err => showError(err.message)),
-    emailLogin: ({ firebase, router, showError }) => creds =>
+    loginWithCredentials: ({ firebase, router, showError }) => creds =>
       firebase.login(creds).catch(err => showError(err.message))
   }),
   // Add styles as props.classes
