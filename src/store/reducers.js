@@ -3,6 +3,7 @@ import { firebaseReducer as firebase } from 'react-redux-firebase'
 import { reducer as firestore } from 'redux-firestore'
 import { reducer as form } from 'redux-form'
 import { reducer as notifications } from 'modules/notification'
+import { reducer as imageCropper } from 'modules/imageCropper'
 import locationReducer from './location'
 
 export function makeRootReducer(asyncReducers) {
@@ -12,6 +13,7 @@ export function makeRootReducer(asyncReducers) {
     firestore,
     form,
     notifications,
+    imageCropper,
     location: locationReducer,
     ...asyncReducers
   })
