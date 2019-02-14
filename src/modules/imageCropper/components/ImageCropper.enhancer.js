@@ -22,6 +22,7 @@ export default compose(
     photos: PropTypes.array.isRequired,
     addImage: PropTypes.func.isRequired,
     updateImage: PropTypes.func.isRequired,
+    deleteImage: PropTypes.func.isRequired,
     showSuccess: PropTypes.func.isRequired,
     showError: PropTypes.func.isRequired
   }),
@@ -97,48 +98,51 @@ export default compose(
       updateImage,
       setCropperDialogOpen
     }) => async () => {
-      if (imageRef && crop.pixelCrop) {
-        let croppedBlob
-
-        try {
-          croppedBlob = await cropImage(imageRef, crop.pixelCrop)
-        } catch (error) {
-          showError('Error recortando foto:', error.message || error)
-          return ''
-        }
-
-        if (editingPhoto && photos[selectedPhotoIndex]) {
-          window.URL.revokeObjectURL(photos[selectedPhotoIndex].croppedUrl)
-        }
-
-        const croppedUrl = window.URL.createObjectURL(croppedBlob)
-
-        if (editingPhoto) {
-          updateImage(selectedPhotoIndex, {
-            originalDataUrl: imageRef.src,
-            croppedUrl,
-            croppedBlob
-          })
-        } else {
-          addImage({
-            originalDataUrl: imageRef.src,
-            croppedUrl,
-            croppedBlob
-          })
-        }
-
-        setCropperDialogOpen(false)
-        showSuccess('Foto recortada!')
+      if (!imageRef || !crop.pixelCrop) {
+        return
       }
+
+      let croppedBlob
+
+      try {
+        croppedBlob = await cropImage(imageRef, crop.pixelCrop)
+      } catch (error) {
+        showError('Error recortando foto:', error.message || error)
+        return ''
+      }
+
+      if (editingPhoto && photos[selectedPhotoIndex]) {
+        window.URL.revokeObjectURL(photos[selectedPhotoIndex].croppedUrl)
+      }
+
+      const croppedUrl = window.URL.createObjectURL(croppedBlob)
+
+      if (editingPhoto) {
+        updateImage(selectedPhotoIndex, {
+          originalDataUrl: imageRef.src,
+          croppedUrl,
+          croppedBlob
+        })
+      } else {
+        addImage({
+          originalDataUrl: imageRef.src,
+          croppedUrl,
+          croppedBlob
+        })
+      }
+
+      setCropperDialogOpen(false)
+      showSuccess('Foto recortada!')
     },
-    editPhoto: ({
-      setCropperDialogOpenAndselectedPhotoIndex
-    }) => photoIndex => () =>
+    editPhoto: ({ setCropperDialogOpenAndselectedPhotoIndex }) => photoIndex =>
       setCropperDialogOpenAndselectedPhotoIndex(photoIndex),
+    deletePhoto: ({ deleteImage, photos }) => photoIndex => {
+      window.URL.revokeObjectURL(photos[photoIndex].croppedUrl)
+      deleteImage(photoIndex)
+    },
     showFullPhoto: ({
       setFullPhotoDialogOpenAndselectedPhotoIndex
-    }) => photoIndex => () =>
-      setFullPhotoDialogOpenAndselectedPhotoIndex(photoIndex),
+    }) => photoIndex => setFullPhotoDialogOpenAndselectedPhotoIndex(photoIndex),
     closeCropperDialog: ({ setCropperDialogOpen }) => () =>
       setCropperDialogOpen(false),
     closeFullPhotoDialog: ({ setFullPhotoDialogOpen }) => () =>

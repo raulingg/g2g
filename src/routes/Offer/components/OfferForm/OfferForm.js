@@ -1,13 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Stepper from '@material-ui/core/Stepper'
-import StepLabel from '@material-ui/core/StepLabel'
-import Step from '@material-ui/core/Step'
+import DoneIcon from '@material-ui/icons/Done'
+import Link from '@material-ui/core/Link'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import OfferFormFirstStep from './OfferFormFirstStep'
 import OfferFormSecondStep from './OfferFormSecondStep'
 import OfferFormThirdStep from './OfferFormThirdStep'
+import Stepper from './Stepper'
+import { Link as RouterLink } from 'react-router-dom'
+import { ACCOUNT_PATH } from 'constants/paths'
 
 const OfferForm = ({
   steps,
@@ -70,61 +72,50 @@ const OfferForm = ({
 
   return (
     <div className={classes.root}>
-      <Stepper
-        activeStep={activeStep}
-        alternativeLabel
-        className={classes.stepper}>
-        {steps.map(label => (
-          <Step key={label}>
-            <StepLabel
-              StepIconProps={{
-                classes: {
-                  root: classes.stepIcon,
-                  text: classes.stepIconText,
-                  active: classes.stepIconActive
-                }
-              }}>
-              {label}
-            </StepLabel>
-          </Step>
-        ))}
-      </Stepper>
+      <Stepper steps={steps} activeStep={activeStep} classes={classes} />
       <div className={classes.stepContainer}>
         {activeStep === steps.length ? (
-          <div>
-            <Typography className={classes.instructions}>
-              All steps completed
+          <div className={classes.successContainer}>
+            <Typography variant="h5" gutterBottom>
+              Tu oferta ha sido creado exitosamente!
             </Typography>
-            <Button onClick={handleReset}>Reset</Button>
+            <DoneIcon
+              color="primary"
+              fontSize="large"
+              className={classes.doneIcon}
+            />
+            <Typography gutterBottom>
+              <Link component={RouterLink} to={ACCOUNT_PATH}>
+                Regresar
+              </Link>
+            </Typography>
           </div>
         ) : (
-          <div>
-            <form onSubmit={handleSubmit}>
-              {getStepContent(activeStep)}
+          <form onSubmit={handleSubmit}>
+            {getStepContent(activeStep)}
 
-              <div className={classes.actionButtonContainer}>
-                <Button
-                  disabled={activeStep === 0}
-                  onClick={handleBack}
-                  className={classes.backButton}>
-                  Atrás
-                </Button>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={
-                    activeStep !== steps.length - 1 ? handleNext : handleSubmit
-                  }
-                  disabled={disableNextStep()}>
-                  {activeStep === steps.length - 1
-                    ? isSubmitting
-                      ? '...Cargando'
-                      : 'Finalizar'
-                    : 'Siguiente'}
-                </Button>
-              </div>
-            </form>
-          </div>
+            <div className={classes.actionButtonContainer}>
+              <Button
+                disabled={activeStep === 0}
+                onClick={handleBack}
+                className={classes.backButton}>
+                Atrás
+              </Button>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={
+                  activeStep !== steps.length - 1 ? handleNext : handleSubmit
+                }
+                disabled={disableNextStep()}>
+                {activeStep === steps.length - 1
+                  ? isSubmitting
+                    ? '...Cargando'
+                    : 'Finalizar'
+                  : 'Siguiente'}
+              </Button>
+            </div>
+          </form>
         )}
       </div>
     </div>

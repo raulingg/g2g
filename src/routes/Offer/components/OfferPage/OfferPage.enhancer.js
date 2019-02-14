@@ -23,9 +23,9 @@ export default compose(
     })
   }),
   withHandlers({
-    addOffer: props => async (newInstance, file) => {
+    addOffer: props => async (newInstance, photos) => {
       const { firestore, firebase } = props
-      const photoName = cuid()
+
       const user = firebase.auth().currentUser
       const path = `${user.uid}/photos`
 
@@ -33,38 +33,41 @@ export default compose(
         return new Error('Debes ingresar a tu cuenta antes de crear una oferta')
       }
 
-      let downloadURL
+      return Promise.all(
+        photos.map(photo => {
+          const photoName = cuid()
+          let resultPath
 
-      try {
-        // get url of image
-        const uploadedFile = await firebase.uploadFile(path, file, null, {
-          name: photoName
+          return firebase
+            .uploadFile(path, photo.croppedBlob, null, {
+              name: photoName
+            })
+            .then(result => {
+              resultPath = result.uploadTaskSnapshot.ref.fullPath
+              return result.uploadTaskSnapshot.ref.getDownloadURL()
+            })
+            .then(downloadUrl => {
+              return { path: resultPath, url: downloadUrl }
+            })
+            .catch(error => console.error('Error', error.message || error)) // eslint-disable-line no-console
         })
-        downloadURL = await uploadedFile.uploadTaskSnapshot.ref.getDownloadURL()
-      } catch (error) {
-        console.error('Error', error.message || error) // eslint-disable-line no-console
-        throw error
-      }
-
-      try {
-        await firestore.add(
-          { collection: 'offers' },
-          {
-            ...newInstance,
-            photos: [
-              {
-                name: photoName,
-                url: downloadURL
-              }
-            ],
-            createdBy: user.uid,
-            createdAt: firestore.FieldValue.serverTimestamp()
-          }
-        )
-      } catch (error) {
-        console.error('Error', error.message || error) // eslint-disable-line no-console
-        throw error
-      }
+      )
+        .then(photosData => {
+          return firestore.add(
+            { collection: 'offers' },
+            {
+              ...newInstance,
+              photos: photosData,
+              createdBy: user.uid,
+              createdAt: firestore.FieldValue.serverTimestamp(),
+              updatedAt: firestore.FieldValue.serverTimestamp()
+            }
+          )
+        })
+        .catch(error => {
+          console.error('Error', error.message || error) // eslint-disable-line no-console
+          throw error
+        })
     }
   }),
   // Add styles as props.classes

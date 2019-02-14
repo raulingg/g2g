@@ -10,6 +10,7 @@ export default theme => ({
     justifyContent: 'center',
     flexGrow: 1,
     padding: '2.5rem',
+    width: '100%',
     marginBottom: theme.spacing.unit * 3
   },
   itemSelectGroup: {
@@ -55,5 +56,15 @@ export default theme => ({
   },
   backButton: {
     marginRight: theme.spacing.unit
+  },
+  successContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  doneIcon: {
+    fontSize: '75px',
+    marginBottom: theme.spacing.unit * 5
   }
 })

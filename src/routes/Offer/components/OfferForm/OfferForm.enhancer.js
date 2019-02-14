@@ -23,12 +23,16 @@ import { withStyles } from '@material-ui/core/styles'
 import styles from './OfferForm.styles'
 import validationSchema from './OfferFom.validationSchema'
 import { connect } from 'react-redux'
+import { setImages } from 'modules/imageCropper/actions'
 
 export default compose(
   setDisplayName('EnhancedOfferForm'),
   UserIsAuthenticated,
   withNotifications,
-  connect(({ imageCropper }) => ({ photos: imageCropper })),
+  connect(
+    ({ imageCropper }) => ({ photos: imageCropper }),
+    { setImages }
+  ),
   setPropTypes({
     photos: PropTypes.arrayOf(
       PropTypes.shape({
@@ -70,12 +74,24 @@ export default compose(
     validationSchema,
     handleSubmit: async (
       values,
-      { setSubmitting, props: { addOffer, photos, showSuccess, showError } }
+      {
+        setSubmitting,
+        props: {
+          addOffer,
+          photos,
+          showSuccess,
+          showError,
+          setImages,
+          activeStep,
+          setActiveStep
+        }
+      }
     ) => {
       try {
-        console.log(photos, values) // eslint-disable-line no-console
         await addOffer(values, photos)
+        setImages()
         showSuccess('Tu oferta fue creada!')
+        setActiveStep(activeStep + 1)
       } catch (error) {
         showError('Oops', error.message || 'No se pudo crear tu oferta')
       }
