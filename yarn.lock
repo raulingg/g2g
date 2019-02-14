@@ -1338,6 +1338,13 @@
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.1.tgz#48fd98c1561fe718b61733daed46ff115b496e18"
   integrity sha512-eqz8c/0kwNi/OEHQfvIuJVLTst3in0e7uTKeuY+WL/zfKn0xVujOTp42bS/vUUokhK5P2BppLd9JXMOMHcgbjA==
 
+"@types/react-image-crop@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@types/react-image-crop/-/react-image-crop-3.0.1.tgz#b9377c469e5586f2253de51af8c999406a9a6da0"
+  integrity sha512-ztTGbTPmYgw7hXZfiB/aGJslX3GtuujcW58xoOO8MpreA0iq+J0LWD+0a42kcRizdMuMqANH41J8ydVJoks3tA==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-transition-group@^2.0.8":
   version "2.0.15"
   resolved "https://registry.yarnpkg.com/@types/react-transition-group/-/react-transition-group-2.0.15.tgz#e5ee3fe558832e141cc6041bdd54caea7b787af8"
@@ -3715,11 +3722,6 @@ create-react-context@^0.2.2:
   dependencies:
     fbjs "^0.8.0"
     gud "^1.0.0"
-
-cropperjs@v1.0.0-rc.3:
-  version "1.0.0-rc.3"
-  resolved "https://registry.yarnpkg.com/cropperjs/-/cropperjs-1.0.0-rc.3.tgz#50a7c7611befc442702f845ede77d7df4572e82b"
-  integrity sha512-3w3Rg95zHeVSAidvsoCzkYo9IycuTkU7pdP+lckQg2PY72HnFjj4JtS1L4sPumVzOU++e14BYp20ZbVczvVN1Q==
 
 cross-env@^5.1.3:
   version "5.2.0"
@@ -11739,14 +11741,6 @@ react-app-polyfill@^0.1.3:
     raf "3.4.0"
     whatwg-fetch "3.0.0"
 
-react-cropper@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/react-cropper/-/react-cropper-1.0.1.tgz#6e5595abb8576088ab3e51ecfdcfe5f865d0340f"
-  integrity sha512-DfSf7j9qMakVnt9TxfVu/iDv01CmgyD4q8UJ1b/IU38cPavLvLmcsdFUKFGTmEZ3efMOJVBnV/yD/0cmxO3cug==
-  dependencies:
-    cropperjs v1.0.0-rc.3
-    prop-types "^15.5.8"
-
 react-dev-utils@^6.1.1:
   version "6.1.1"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-6.1.1.tgz#a07e3e8923c4609d9f27e5af5207e3ca20724895"
@@ -11825,6 +11819,13 @@ react-google-button@^0.5.3:
   integrity sha512-2xiECMLZ2qUbMtYq7fjwi/8WEVpLI5UuZLPGJzVkpcGOq/hdY5tqx8AXWUqI7QOgb9mG48/UG67kOzTgab+NUw==
   dependencies:
     prop-types "^15.5.8"
+
+react-image-crop@^6.0.12:
+  version "6.0.12"
+  resolved "https://registry.yarnpkg.com/react-image-crop/-/react-image-crop-6.0.12.tgz#65e3dc22fb663ed41d5c25ec49ba3775b020ec9b"
+  integrity sha512-ngV/hMcyXyTyIcnzNA2fLZU8xoEOq7VT9Vvy7n2QThRBWy1CpmCRLJ+Kn5xg6CEZNe8HLikS6cq/uVjf97VLdg==
+  dependencies:
+    "@types/react-image-crop" "^3.0.1"
 
 react-is@^16.3.2, react-is@^16.6.0, react-is@^16.6.3, react-is@^16.7.0:
   version "16.7.0"

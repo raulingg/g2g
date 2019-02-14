@@ -29,5 +29,15 @@ service cloud.firestore {
         allow read, write: if isOwner(get(/databases/$(database)/documents/projects/$(projectId)));
       }
     }
+    
+    // Offers
+    match /offers/{offerId} {
+    	allow read, update, delete: if isOwner(resource);
+      allow create: if request.auth.uid != null;
+      // Rules apply to all child collections
+      match /{allChildren=**} {
+        allow read, write: if isOwner(get(/databases/$(database)/documents/offers/$(offerId)));
+      }
+    }
   }
 }
