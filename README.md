@@ -3,6 +3,7 @@
 
 <p align="center">
   <a href="https://circleci.com/gh/raulingg/g2g/tree/master"><img alt="CircleCI" src="https://circleci.com/gh/raulingg/g2g/tree/master.svg?style=svg"></a>
+  <a href="https://deepscan.io/dashboard#view=project&tid=2913&pid=4361&bid=35429"><img alt="DeepScan" src="https://deepscan.io/api/teams/2913/projects/4361/branches/35429/badge/grade.svg"></a>
   <a href="http://commitizen.github.io/cz-cli/"><img alt="Commitizen" src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg"></a>
   <a href="https://github.com/semantic-release/semantic-release"><img alt="Semantic Release" src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg"></a>
   <a href="https://github.com/prettier/prettier"><img alt="code style: prettier" src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square"></a>
@@ -13,15 +14,15 @@
 
 ## Table of Contents
 
-1. [Features](#features)
-2. [Requirements](#requirements)
-3. [Getting Started](#getting-started)
-4. [Application Structure](#application-structure)
-5. [Development](#development)
-    1. [Routing](#routing)
-6. [Configuration](#configuration)
-7. [Production](#production)
-8. [Deployment](#deployment)
+- [Table of Contents](#table-of-contents)
+- [Requirements](#requirements)
+- [Getting Started](#getting-started)
+- [Config Files](#config-files)
+- [Application Structure](#application-structure)
+- [Routing](#routing)
+  - [Sync Routes](#sync-routes)
+  - [Async Routes](#async-routes)
+- [FAQ](#faq)
 
 ## Requirements
 
