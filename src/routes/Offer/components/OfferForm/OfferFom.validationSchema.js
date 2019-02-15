@@ -51,5 +51,10 @@ export default Yup.object({
       otherwise: Yup.number()
         .min(0, 'Level de item debe ser mínimo +0')
         .max(ITEM_MAX_LEVEL, 'Level de item debe ser máximo +10')
-    })
+    }),
+  priceFrom: Yup.number()
+    .required('Precio desde es requerido.')
+    .positive()
+    .min(1, 'Precio desde mínimo 1')
+    .max(999999, 'Precio desde máximo 99999')
 })

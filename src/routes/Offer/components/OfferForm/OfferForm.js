@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography'
 import OfferFormFirstStep from './OfferFormFirstStep'
 import OfferFormSecondStep from './OfferFormSecondStep'
 import OfferFormThirdStep from './OfferFormThirdStep'
+import OfferFormFourthStep from './OfferFormFourthStep'
 import Stepper from './Stepper'
 import { Link as RouterLink } from 'react-router-dom'
 import { ACCOUNT_PATH } from 'constants/paths'
@@ -21,7 +22,6 @@ const OfferForm = ({
   offerItemMaxLevel,
   offerCreatureMaxLevel,
   disableNextStep,
-  handleReset,
   handleBack,
   handleNext,
   values,
@@ -30,6 +30,7 @@ const OfferForm = ({
   isSubmitting,
   handleChange,
   handleBlur,
+  handleChangePriceFrom,
   handleSubmit,
   classes
 }) => {
@@ -63,6 +64,17 @@ const OfferForm = ({
             handleChange={handleChange}
             handleBlur={handleBlur}
             classes={classes}
+          />
+        )
+      case 3:
+        return (
+          <OfferFormFourthStep
+            values={values}
+            touched={touched}
+            errors={errors}
+            handleBlur={handleBlur}
+            classes={classes}
+            handleChangePriceFrom={handleChangePriceFrom}
           />
         )
       default:
@@ -125,7 +137,6 @@ const OfferForm = ({
 OfferForm.propTypes = {
   steps: PropTypes.array.isRequired,
   activeStep: PropTypes.number.isRequired,
-  handleReset: PropTypes.func.isRequired,
   handleBack: PropTypes.func.isRequired,
   handleNext: PropTypes.func.isRequired,
   classes: PropTypes.object.isRequired // from enhancer (withStyles)
