@@ -40,7 +40,7 @@ files.forEach(functionFile => {
     .replace(/[-]/g, '')
 
   // Load single function from default
-  !process.env.FUNCTION_NAME || process.env.FUNCTION_NAME === folderName // eslint-disable-line no-unused-expressions
-    ? (exports[folderName] = require(functionFile).default) // eslint-disable-line global-require
-    : () => {}
+  if (!process.env.FUNCTION_NAME || process.env.FUNCTION_NAME === folderName) {
+    exports[folderName] = require(functionFile).default // eslint-disable-line global-require
+  }
 })
