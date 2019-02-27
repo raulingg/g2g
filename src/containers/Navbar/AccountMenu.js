@@ -38,7 +38,9 @@ const AccountMenu = ({
       open={Boolean(anchorEl)}
       onClose={closeAccountMenu}>
       <MenuItem onClick={goToAccount}>Account</MenuItem>
-      <MenuItem onClick={onLogoutClick}>Sign Out</MenuItem>
+      <MenuItem onClick={onLogoutClick} data-test="sign-out-button">
+        Sign Out
+      </MenuItem>
     </Menu>
   </div>
 )

@@ -24,10 +24,12 @@ export function showNotification(notif) {
     dispatch({ type: NOTIFICATION_SHOW, payload })
 
     setTimeout(() => {
-      dispatch({
-        type: NOTIFICATION_DISMISS,
-        payload: payload.id
-      })
+      if (dispatch) {
+        dispatch({
+          type: NOTIFICATION_DISMISS,
+          payload: payload.id
+        })
+      }
     }, payload.dismissAfter || defaultDismissTime)
   }
 }

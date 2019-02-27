@@ -23,6 +23,7 @@ const OfferFormSecondStep = ({
     <Paper className={classes.panel}>
       <h3>Tipo de oferta</h3>
       <InputField
+        data-test="OfferTypeInput"
         name="offerType"
         select
         label="Tipo de oferta"
@@ -34,7 +35,7 @@ const OfferFormSecondStep = ({
         fullWidth
         className={classes.inputField}>
         {Object.keys(offerTypes).map(key => (
-          <MenuItem key={key} value={key}>
+          <MenuItem key={key} value={key} data-test={`offerTypeOption-${key}`}>
             {offerTypes[key]}
           </MenuItem>
         ))}
@@ -45,6 +46,7 @@ const OfferFormSecondStep = ({
         <h3>Datos sobre el item</h3>
         <div className={classes.itemSelectGroup}>
           <TextField
+            data-test="itemTypeInput"
             id="itemType"
             name="itemType"
             select
@@ -63,6 +65,7 @@ const OfferFormSecondStep = ({
           </TextField>
           {offerClothes.hasOwnProperty(values.itemType) && (
             <TextField
+              data-test="itemClassInput"
               id="itemClass"
               name="itemClass"
               select
@@ -81,6 +84,7 @@ const OfferFormSecondStep = ({
             </TextField>
           )}
           <TextField
+            data-test="itemLevelInput"
             id="itemLevel"
             name="itemLevel"
             select

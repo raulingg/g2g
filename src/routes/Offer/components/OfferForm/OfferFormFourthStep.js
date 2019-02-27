@@ -15,6 +15,7 @@ const OfferFormFourthStep = ({
   <div className={classes.root}>
     <Paper className={classes.panel}>
       <InputField
+        data-test="priceFromInput"
         name="priceFrom"
         label="Precio Desde"
         onChange={event => handleChangePriceFrom(event.target.value)}

@@ -6,9 +6,9 @@ version: 2.1
 
 executors:
   create-container:
-    docker:
-      - image: circleci/node
     working_directory: ~/repo
+    docker:
+      - image: cypress/base:8
 
 jobs:
   building:
@@ -18,43 +18,58 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "package.json" }}
+            - v2-dependencies-{{ checksum "package.json" }}
             # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
-      - run: yarn install
+            - v2-dependencies-
+      - run: yarn install --frozen-lockfile
       - save_cache:
           paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-      - run: yarn build:config
+            - ~/.cache
+          key: v2-dependencies-{{ checksum "package.json" }}
+      - run: yarn build:config --project "testing"
       - run: yarn lint
-      # run tests!
       - run: yarn test
+  e2e-testing:
+    executor: create-container
+    parallelism: 2
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v2-dependencies-{{ checksum "package.json" }}
+            - v2-dependencies-
+      - run: yarn install --frozen-lockfile
+      - run: yarn build:config --project "testing"
       - run: yarn build
-      - run: cd ..
-      - save_cache:
-          paths:
-            - ./
-          key: build-cache-v1-{{ .Environment.CIRCLE_WORKFLOW_ID }}
-
+      - run: yarn e2e:ci:record
+      # - store_test_results:
+      #     path: multiple-results
+      # - store_artifacts:
+      #     path: cypress/videos
+      # - store_artifacts:
+      #     path: cypress/screenshots
   deploying:
     executor: create-container
     steps:
+      - checkout
       - restore_cache:
           keys:
-            - build-cache-v1-{{ .Environment.CIRCLE_WORKFLOW_ID }}
-            # fallback to using the latest cache if no exact match is found
-            - build-cache-v1-
+            - v2-dependencies-{{ checksum "package.json" }}
+            - v2-dependencies-
+      - run: yarn install --frozen-lockfile
+      - run: yarn build:config
+      - run: yarn build
       - run: npx semantic-release
-      - run: yarn add firebase-ci@^0.5.0
       - run: yarn deploy
 
 workflows:
   version: 2.1
-
   g2g:
     jobs:
       - building
+      - e2e-testing:
+          requires:
+            - building
       - deploying:
           # type: approval
           filters:
@@ -64,3 +79,4 @@ workflows:
                 - /rc-.*/
           requires:
             - building
+            - e2e-testing

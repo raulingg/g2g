@@ -14,15 +14,14 @@ const imageCropper = (state = imageCropperReducerDefaultState, action) => {
     case IMAGE_CROPPER_ADD:
       return [...state, action.payload]
     case IMAGE_CROPPER_UPDATE:
-      return state.map((item, key) => {
-        if (key === action.id) {
-          return {
-            ...item,
-            ...action.updates
-          }
-        }
-        return item
-      })
+      return state.map((item, key) =>
+        key === action.id
+          ? {
+              ...item,
+              ...action.updates
+            }
+          : item
+      )
     case IMAGE_CROPPER_DELETE:
       return state.filter((item, key) => key !== action.id)
     default:

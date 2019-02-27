@@ -18,3 +18,13 @@ functions/dist
 functions/.runtimeconfig.json
 functions/coverage
 .vscode
+
+#testing files
+cypress/videos
+cypress/screenshots
+cypress.env.json
+
+
+# env files
+serviceAccount.json
+cypress/config.json

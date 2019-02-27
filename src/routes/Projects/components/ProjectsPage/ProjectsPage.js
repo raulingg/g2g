@@ -39,6 +39,7 @@ const ProjectsPage = ({
             {!isEmpty(projects) &&
               projects.map((project, ind) => (
                 <ProjectTile
+                  id={project.id}
                   key={`Project-${project.id}-${ind}`}
                   name={project.name}
                   onSelect={() => goToProject(project.id)}

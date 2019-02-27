@@ -71,6 +71,7 @@ const LoginForm = ({
       />
       <div className={classes.submit}>
         <Button
+          data-test="login-with-credentials-submit"
           color="primary"
           type="submit"
           variant="contained"

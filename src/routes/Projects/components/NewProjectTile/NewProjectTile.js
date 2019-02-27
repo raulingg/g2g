@@ -7,7 +7,10 @@ const iconSize = '6rem'
 const iconStyle = { width: iconSize, height: iconSize }
 
 const NewProjectTile = ({ onClick, classes }) => (
-  <Paper className={classes.root} onClick={onClick}>
+  <Paper
+    className={classes.root}
+    onClick={onClick}
+    data-test="new-project-title">
     <ContentAddCircle style={iconStyle} />
   </Paper>
 )
