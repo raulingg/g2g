@@ -26,7 +26,11 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-      - run: yarn build:config
+       - save_cache:
+          paths:
+            - ./.cache/Cypress
+          key: cypress-bin-{{ checksum "package.json" }}
+      - run: yarn build:config --project "testing"
       - run: yarn lint
       # run tests!
       - run: yarn test
@@ -35,16 +39,18 @@ jobs:
       - save_cache:
           paths:
             - ./
-          key: build-cache-v1-{{ .Environment.CIRCLE_WORKFLOW_ID }}
+          key: build-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
 
   e2e-testing:
     executor: create-container
+    parallelism: 2
     steps:
       - restore_cache:
           keys:
-            - build-cache-v1-{{ .Environment.CIRCLE_WORKFLOW_ID }}
+            - cypress-bin-{{ checksum "package.json" }}
+            - build-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
             # fallback to using the latest cache if no exact match is found
-            - build-cache-v1-
+            - build-cache
       - run:
           name: Running E2E tests with multiple reporters
           command: yarn e2e:ci
@@ -56,15 +62,15 @@ jobs:
       #     path: cypress/screenshots
   deploying:
     executor: create-container
-    parallelism: 2
     steps:
       - restore_cache:
           keys:
-            - build-cache-v1-{{ .Environment.CIRCLE_WORKFLOW_ID }}
+            - build-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
             # fallback to using the latest cache if no exact match is found
-            - build-cache-v1-
+            - build-cache
+      - run: yarn build:config
+      - run: yarn build
       - run: npx semantic-release
-      - run: yarn add firebase-ci@^0.5.0
       - run: yarn deploy
 
 workflows:
