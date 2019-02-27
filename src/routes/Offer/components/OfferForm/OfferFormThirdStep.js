@@ -14,6 +14,7 @@ const OfferFormThirdStep = ({
   <div className={classes.root}>
     <Paper className={classes.panel}>
       <InputField
+        data-test="titleInput"
         name="title"
         label="Título"
         onChange={handleChange}
@@ -25,6 +26,7 @@ const OfferFormThirdStep = ({
         className={classes.inputField}
       />
       <InputField
+        data-test="descriptionInput"
         name="description"
         label="Descripción"
         onChange={handleChange}

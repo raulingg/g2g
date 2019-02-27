@@ -2,11 +2,26 @@
   "projects": {
     "default": "g2g-app-72a17",
     "master": "g2g-app-72a17",
-    "prod": "g2g-app-72a17"
+    "prod": "g2g-app-72a17",
+    "testing": "testing-g2g-app"
   },
   "ci": {
     "copyVersion": true,
     "createConfig": {
+      "testing": {
+        "env": "testing",
+        "firebase": {
+          "apiKey": "${CYPRESS_FIREBASE_API_KEY}",
+          "authDomain": "testing-g2g-app.firebaseapp.com",
+          "databaseURL": "https://testing-g2g-app.firebaseio.com",
+          "projectId": "testing-g2g-app",
+          "storageBucket": "gs://testing-g2g-app.appspot.com",
+          "messagingSenderId": "705177702918"
+        },
+        "sentryDsn": "${SENTRY_DSN}",
+        "analyticsTrackingId": "${GA_TRACKING_ID}",
+        "publicVapidKey": "${CYPRESS_PUBLIC_VAPID_KEY}"
+      },
       "master": {
         "env": "staging",
         "firebase": {

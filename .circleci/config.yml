@@ -6,9 +6,13 @@ version: 2.1
 
 executors:
   create-container:
+    working_directory: ~/repo
     docker:
       - image: circleci/node
-    working_directory: ~/repo
+      environment:
+        ## this enables colors in the output
+        TERM: xterm
+    
 
 jobs:
   building:
@@ -37,8 +41,26 @@ jobs:
             - ./
           key: build-cache-v1-{{ .Environment.CIRCLE_WORKFLOW_ID }}
 
+  e2e-testing:
+    executor: create-container
+    steps:
+      - restore_cache:
+          keys:
+            - build-cache-v1-{{ .Environment.CIRCLE_WORKFLOW_ID }}
+            # fallback to using the latest cache if no exact match is found
+            - build-cache-v1-
+      - run:
+          name: Running E2E tests with multiple reporters
+          command: yarn e2e:ci
+      # - store_test_results:
+      #     path: multiple-results
+      # - store_artifacts:
+      #     path: cypress/videos
+      # - store_artifacts:
+      #     path: cypress/screenshots
   deploying:
     executor: create-container
+    parallelism: 2
     steps:
       - restore_cache:
           keys:
@@ -51,10 +73,10 @@ jobs:
 
 workflows:
   version: 2.1
-
   g2g:
     jobs:
       - building
+      - e2e-testing
       - deploying:
           # type: approval
           filters:
@@ -64,3 +86,4 @@ workflows:
                 - /rc-.*/
           requires:
             - building
+            - e2e-testing

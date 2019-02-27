@@ -36,7 +36,6 @@ export default compose(
         x: 0,
         y: 0
       },
-      croppedPhotoUrls: [],
       cropperDialogOpen: false,
       fullPhotoDialogOpen: false,
       selectedPhotoIndex: 0,

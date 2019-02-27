@@ -6,14 +6,17 @@ import Tooltip from '@material-ui/core/Tooltip'
 import DeleteIcon from '@material-ui/icons/Delete'
 
 const ProjectTile = ({ name, onSelect, onDelete, showDelete, classes }) => (
-  <Paper className={classes.root}>
+  <Paper className={classes.root} data-test="project-item">
     <div className={classes.top}>
-      <span className={classes.name} onClick={onSelect}>
+      <span
+        className={classes.name}
+        onClick={onSelect}
+        data-test="project-title-name">
         {name || 'No Name'}
       </span>
       {showDelete && onDelete ? (
         <Tooltip title="delete">
-          <IconButton onClick={onDelete}>
+          <IconButton onClick={onDelete} data-test="project-delete-button">
             <DeleteIcon />
           </IconButton>
         </Tooltip>

@@ -15,6 +15,7 @@ const NewProjectDialog = ({ classes, handleSubmit, open, onRequestClose }) => (
     <form onSubmit={handleSubmit} className={classes.inputs}>
       <DialogContent>
         <Field
+          data-test="new-project-name"
           name="name"
           component={TextField}
           label="Project Name"
@@ -25,7 +26,10 @@ const NewProjectDialog = ({ classes, handleSubmit, open, onRequestClose }) => (
         <Button onClick={onRequestClose} color="secondary">
           Cancel
         </Button>
-        <Button type="submit" color="primary">
+        <Button
+          type="submit"
+          color="primary"
+          data-test="new-project-create-button">
           Create
         </Button>
       </DialogActions>

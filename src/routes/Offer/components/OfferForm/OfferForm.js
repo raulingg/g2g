@@ -41,6 +41,7 @@ const OfferForm = ({
       case 1:
         return (
           <OfferFormSecondStep
+            data-test="SecondStep"
             offerClasses={offerClasses}
             offerTypes={offerTypes}
             offerItemTypes={offerItemTypes}
@@ -58,6 +59,7 @@ const OfferForm = ({
       case 2:
         return (
           <OfferFormThirdStep
+            data-test="ThirdStep"
             values={values}
             touched={touched}
             errors={errors}
@@ -69,6 +71,7 @@ const OfferForm = ({
       case 3:
         return (
           <OfferFormFourthStep
+            data-test="FourthStep"
             values={values}
             touched={touched}
             errors={errors}
@@ -108,12 +111,14 @@ const OfferForm = ({
 
             <div className={classes.actionButtonContainer}>
               <Button
+                data-test="preButton"
                 disabled={activeStep === 0}
                 onClick={handleBack}
                 className={classes.backButton}>
                 Atrás
               </Button>
               <Button
+                data-test="nextButton"
                 variant="contained"
                 color="primary"
                 onClick={

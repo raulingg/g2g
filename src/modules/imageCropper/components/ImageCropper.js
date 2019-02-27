@@ -32,8 +32,8 @@ const ImageCropper = ({
 }) => (
   <React.Fragment>
     <Dropzone
-      imagesMaxNumber={max}
-      imagesNumber={photos.length}
+      maxSize={2 * 1024 * 1024}
+      disabled={photos.length === max}
       onDrop={onDrop}
       classes={classes}
     />
@@ -47,6 +47,7 @@ const ImageCropper = ({
 
     {/* Full Image Dialog starts */}
     <Dialog
+      data-test="full-image-dialog"
       maxWidth="xl"
       onClose={closeFullPhotoDialog}
       open={photos.length > 0 && fullPhotoDialogOpen}

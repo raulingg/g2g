@@ -15,7 +15,10 @@ const CroppedPhotos = ({
 }) => (
   <div className={classes.photosContainer}>
     {photos.map((photo, index) => (
-      <div className={classes.photoItem} key={`cropped-photos-${index}`}>
+      <div
+        className={classes.photoItem}
+        key={`cropped-photos-${index}`}
+        data-test="cropped-photo">
         <CardMedia
           component="img"
           className={classes.photo}
@@ -24,12 +27,14 @@ const CroppedPhotos = ({
           title="Preview"
         />
         <Fab
+          data-test="edit-button"
           size="small"
           className={classes.cropFabButton}
           onClick={() => editPhoto(index)}>
           <CropIcon />
         </Fab>
         <Fab
+          data-test="delete-button"
           size="small"
           onClick={() => deletePhoto(index)}
           className={classes.deleteFabButton}>

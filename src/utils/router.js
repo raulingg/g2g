@@ -54,7 +54,7 @@ export const UserIsNotAuthenticated = connectedRouterRedirect({
   authenticatingSelector: ({ firebase: { auth, isInitializing } }) =>
     !auth.isLoaded || isInitializing,
   redirectPath: (state, ownProps) =>
-    locationHelper.getRedirectQueryParam(ownProps) || LIST_PATH,
+    locationHelper.getRedirectQueryParam(ownProps) || '/',
   redirectAction: newLoc => dispatch => {
     // Use push, replace, and go to navigate around.
     history.push(newLoc)
