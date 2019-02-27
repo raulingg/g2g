@@ -41,7 +41,7 @@ jobs:
       - run: yarn install --frozen-lockfile
       - run: yarn build:config --project "testing"
       - run: yarn build
-      - run: yarn e2e:ci
+      - run: yarn e2e:ci:record:parallel
       # - store_test_results:
       #     path: multiple-results
       # - store_artifacts:
