@@ -28,7 +28,7 @@
     "cypress:run:baseUrl": "export CYPRESS_BASE_URL=http://localhost:8000 && cypress run",
     "serve": "ws -d build --spa index.html --port 8000 --hostname localhost",
     "e2e:ci": "run-p --race serve cypress:run:baseUrl",
-    "e2e:ci:parallel": "run-p --race serve cypress:run:baseUrl -- --parallel",
+    "e2e:ci:parallel": "run-p --race serve \"cypress:run:baseUrl -- --parallel\"",
     "e2e:ci:record": "run-p --race serve \"cypress:run:baseUrl -- --record\"",
     "e2e:ci:record:parallel": "run-p --race serve \"cypress:run:baseUrl -- --parallel --record\"",
     "e2e:ci:chrome": "run-p --race serve \"cypress:run:baseUrl -- --browser chrome\"",
