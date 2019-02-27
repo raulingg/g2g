@@ -9,10 +9,6 @@ executors:
     working_directory: ~/repo
     docker:
       - image: circleci/node
-      environment:
-        ## this enables colors in the output
-        TERM: xterm
-    
 
 jobs:
   building:
