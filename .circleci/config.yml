@@ -72,7 +72,9 @@ workflows:
   g2g:
     jobs:
       - building
-      - e2e-testing
+      - e2e-testing:
+          requires:
+            - building
       - deploying:
           # type: approval
           filters:
