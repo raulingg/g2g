@@ -8,7 +8,7 @@ executors:
   create-container:
     working_directory: ~/repo
     docker:
-      - image: circleci/node
+      - image: cypress/base:8
 
 jobs:
   building:
@@ -21,15 +21,11 @@ jobs:
             - v1-dependencies-{{ checksum "package.json" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
-      - run: yarn install
+      - run: yarn install --frozen-lockfile
       - save_cache:
           paths:
-            - node_modules
+            - ~/.cache
           key: v1-dependencies-{{ checksum "package.json" }}
-       - save_cache:
-          paths:
-            - ./.cache/Cypress
-          key: cypress-bin-{{ checksum "package.json" }}
       - run: yarn build:config --project "testing"
       - run: yarn lint
       # run tests!
@@ -47,13 +43,10 @@ jobs:
     steps:
       - restore_cache:
           keys:
-            - cypress-bin-{{ checksum "package.json" }}
             - build-cache-{{ .Environment.CIRCLE_WORKFLOW_ID }}
             # fallback to using the latest cache if no exact match is found
             - build-cache
-      - run:
-          name: Running E2E tests with multiple reporters
-          command: yarn e2e:ci
+      - run: yarn e2e:ci
       # - store_test_results:
       #     path: multiple-results
       # - store_artifacts:
