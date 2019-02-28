@@ -14,6 +14,8 @@
 
 ## Table of Contents
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/raulingg/g2g.svg)](https://greenkeeper.io/)
+
 - [Table of Contents](#table-of-contents)
 - [Requirements](#requirements)
 - [Getting Started](#getting-started)
