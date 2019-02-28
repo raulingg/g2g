@@ -17,6 +17,7 @@ branches:
     - master
     - stage
     - prod
+    - /^greenkeeper/.*$/
 
 cache:
   directories:

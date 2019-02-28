@@ -3,6 +3,7 @@
 
 <p align="center">
   <a href="https://circleci.com/gh/raulingg/g2g/tree/master"><img alt="CircleCI" src="https://circleci.com/gh/raulingg/g2g/tree/master.svg?style=svg"></a>
+  <a href="https://greenkeeper.io/"><img alt="Greenkeeper" src="https://badges.greenkeeper.io/raulingg/g2g.svg"></a>
   <a href="https://deepscan.io/dashboard#view=project&tid=2913&pid=4361&bid=35429"><img alt="DeepScan" src="https://deepscan.io/api/teams/2913/projects/4361/branches/35429/badge/grade.svg"></a>
   <a href="http://commitizen.github.io/cz-cli/"><img alt="Commitizen" src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg"></a>
   <a href="https://github.com/semantic-release/semantic-release"><img alt="Semantic Release" src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg"></a>
@@ -13,7 +14,6 @@
 
 
 ## Table of Contents
-
 - [Table of Contents](#table-of-contents)
 - [Requirements](#requirements)
 - [Getting Started](#getting-started)
@@ -32,7 +32,7 @@
 ## Getting Started
 
 1. Install app and functions dependencies: `npm i && npm i --prefix functions` or `yarn install && yarn install --cwd functions`
-1. Create `src/config.js` file that looks like so if it does not already exist:
+2. Create `src/config.js` file that looks like so if it does not already exist:
     ```js
     const firebase = {
       // Config from Firebase console
@@ -53,7 +53,7 @@
       analyticsTrackingId
     }
     ```
-1. Start Development server: `npm start`
+3. Start Development server: `npm start`
 
 While developing, you will probably rely mostly on `npm start`; however, there are additional scripts at your disposal:
 
