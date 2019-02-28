@@ -66,11 +66,7 @@ workflows:
   version: 2.1
   g2g:
     jobs:
-      - building:
-          filters:
-            branches:
-              ignore:
-                - /^greenkeeper/.*$/
+      - building
       - e2e-testing:
           requires:
             - building
