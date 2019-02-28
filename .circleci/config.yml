@@ -67,10 +67,10 @@ workflows:
   g2g:
     jobs:
       - building:
-        filters:
-          branches:
-            ignore:
-              - /^greenkeeper/.*$/
+          filters:
+            branches:
+              ignore:
+                - /^greenkeeper/.*$/
       - e2e-testing:
           requires:
             - building
