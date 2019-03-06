@@ -1,4 +1,11 @@
 {
   "projectId": "7chn45",
-  "chromeWebSecurity": false
+  "chromeWebSecurity": false,
+  "reporter": "mochawesome",
+  "reporterOptions": {
+    "reportDir": "cypress/results",
+    "overwrite": false,
+    "html": false,
+    "json": true
+  }
 }
