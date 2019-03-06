@@ -41,13 +41,12 @@ jobs:
       - run: yarn install --frozen-lockfile
       - run: yarn build:config --project "testing"
       - run: yarn build
-      - run: yarn e2e:ci:record
-      # - store_test_results:
-      #     path: multiple-results
-      # - store_artifacts:
-      #     path: cypress/videos
-      # - store_artifacts:
-      #     path: cypress/screenshots
+      - run: yarn e2e:ci:report
+      - run: yarn cypress:report:generate
+      - store_test_results:
+          path: cypress/results
+      - store_artifacts:
+          path: mochawesome-report
   deploying:
     executor: create-container
     steps:

@@ -22,8 +22,10 @@ functions/coverage
 #testing files
 cypress/videos
 cypress/screenshots
+cypress/results
 cypress.env.json
-
+mochawesome-report
+mochawesome.json
 
 # env files
 serviceAccount.json
