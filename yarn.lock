@@ -14091,10 +14091,10 @@ react-google-button@^0.5.3:
   dependencies:
     prop-types "^15.5.8"
 
-react-image-crop@^6.0.12:
-  version "6.0.14"
-  resolved "https://registry.yarnpkg.com/react-image-crop/-/react-image-crop-6.0.14.tgz#e21bd72b44a81087d71410de29d2a517c246968f"
-  integrity sha512-ozZwgRDSLyRnO2bVWGYJJxPBVfkgDsQy37I2Dqg4RiDFSkVbloGd2GgavBTIyasH1dXRDtrGr8y5zNZ/g8C+9w==
+react-image-crop@^6.0.17:
+  version "6.0.17"
+  resolved "https://registry.yarnpkg.com/react-image-crop/-/react-image-crop-6.0.17.tgz#8cf440bb905baaccf44ccebd81c85f1865536e5a"
+  integrity sha512-KIB7SOp99QPhCEtA+HyD/BGBF3M6MaLbXCj842dTt1d+YHd6ebLuAS4UP3E5zI1H9is8EN5XegYghMl5MO6fhw==
   dependencies:
     "@types/react-image-crop" "^3.0.1"
 
