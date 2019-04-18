@@ -6585,10 +6585,10 @@ firebase-tools-extra@^0.0.8:
     npx "^10.2.0"
     yargs "^12.0.5"
 
-firebase-tools@^6.1.2:
-  version "6.4.0"
-  resolved "https://registry.yarnpkg.com/firebase-tools/-/firebase-tools-6.4.0.tgz#87a757e00fdd6476d6ef4f8b080e173a13546268"
-  integrity sha512-hk9pYYtdwdfKVgFuXkSiIfVHey+V7GgYlVXS+fLdXtD1HlxIEuoP52F/NShtM0gdnFgUk88baEHHRmtHaNZtSQ==
+firebase-tools@^6.7.0:
+  version "6.7.0"
+  resolved "https://registry.yarnpkg.com/firebase-tools/-/firebase-tools-6.7.0.tgz#0d167272241d6cb157f71bfb08928c83ffd81923"
+  integrity sha512-x0V5ZK3cI5hLlQOZUvNOtDbiP1SJmM9iLDQEuvirQQrNlk47I4OSLkHpHSVV6/6yQDgLUCizTfxikartTMeWLg==
   dependencies:
     JSONStream "^1.2.1"
     archiver "^2.1.1"
@@ -6614,7 +6614,7 @@ firebase-tools@^6.1.2:
     jsonwebtoken "^8.2.1"
     lodash "^4.17.10"
     minimatch "^3.0.4"
-    opn "^5.3.0"
+    opn "^5.5.0"
     ora "0.2.3"
     portfinder "^1.0.13"
     progress "^2.0.0"
@@ -12248,10 +12248,17 @@ opener@~1.4.3:
   resolved "https://registry.yarnpkg.com/opener/-/opener-1.4.3.tgz#5c6da2c5d7e5831e8ffa3964950f8d6674ac90b8"
   integrity sha1-XG2ixdflgx6P+jlklQ+NZnSskLg=
 
-opn@5.4.0, opn@^5.1.0, opn@^5.3.0, opn@^5.4.0:
+opn@5.4.0, opn@^5.1.0, opn@^5.4.0:
   version "5.4.0"
   resolved "https://registry.yarnpkg.com/opn/-/opn-5.4.0.tgz#cb545e7aab78562beb11aa3bfabc7042e1761035"
   integrity sha512-YF9MNdVy/0qvJvDtunAOzFw9iasOQHpVthTCvGzxt61Il64AYSGdK+rYwld7NAfk9qJ7dt+hymBNSc9LNYS+Sw==
+  dependencies:
+    is-wsl "^1.1.0"
+
+opn@^5.5.0:
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/opn/-/opn-5.5.0.tgz#fc7164fab56d235904c51c3b27da6758ca3b9bfc"
+  integrity sha512-PqHpggC9bLV0VeWcdKhkpxY+3JTzetLSqTCWL/z/tFIbI6G8JCjondXklT1JinczLz2Xib62sSp0T/gKT4KksA==
   dependencies:
     is-wsl "^1.1.0"
 
