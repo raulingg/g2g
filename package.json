@@ -87,7 +87,7 @@
     "@semantic-release/github": "^5.2.9",
     "@semantic-release/release-notes-generator": "^7.1.4",
     "babel-eslint": "^10.0.0",
-    "commitizen": "^3.0.5",
+    "commitizen": "^3.1.1",
     "cypress": "^3.2.0",
     "cypress-firebase": "^0.1.1",
     "cz-conventional-changelog": "^2.1.0",
