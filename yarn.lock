@@ -14478,10 +14478,10 @@ redux-auth-wrapper@^2.0.3:
     prop-types "^15.5.0"
     query-string "^5.1.1"
 
-redux-firestore@^0.7.0:
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/redux-firestore/-/redux-firestore-0.7.0.tgz#a2d0046263154691839d8370ccc94dd2cbfd97c0"
-  integrity sha512-5uRUAWvj/HrplmtOe8tNWrQDmAC99G4ZOGx2xmGVJbfn9egrOG3BcbSCBCvryQTe7DBOdmZSdQlDpRbgDDJc8w==
+redux-firestore@^0.7.4:
+  version "0.7.4"
+  resolved "https://registry.yarnpkg.com/redux-firestore/-/redux-firestore-0.7.4.tgz#a3a172892229a1f2716536f9eec570ab2f6e526d"
+  integrity sha512-x99QsB3MZtZ75bg/dCDkVwF0EvjDIBsqrz/ZZ8w/8XlM5xIg2ewFWU3H1obepNinD5JW6FOQr4Yn6bXIgeLqOg==
   dependencies:
     immer "1.5.0"
     lodash "^4.17.11"
