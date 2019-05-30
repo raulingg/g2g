@@ -14492,10 +14492,10 @@ redux-form-material-ui@^5.0.0-beta.3:
   resolved "https://registry.yarnpkg.com/redux-form-material-ui/-/redux-form-material-ui-5.0.0-beta.3.tgz#448121031ffce11886d33c93155fbab51b31a6b8"
   integrity sha512-YoUZi6VvqoGDYk00bObf/2laTKZ4ApE5Bd7gItkgDYKor84K/kbzVj255oYNf8rMCAzXjQDQ2RgX3PSyES4uvQ==
 
-redux-form@^8.1.0:
-  version "8.1.0"
-  resolved "https://registry.yarnpkg.com/redux-form/-/redux-form-8.1.0.tgz#087b39eaa96b6f5cc0764a30eca10e0459884cce"
-  integrity sha512-d2+0OaJpSq3kwkbPtFlG3W/HENWLxX8NqqTHSOnfgIrID/9faH/rxejLa1X3HChilCTm71zWe/g9zaLPCMCofQ==
+redux-form@^8.2.2:
+  version "8.2.2"
+  resolved "https://registry.yarnpkg.com/redux-form/-/redux-form-8.2.2.tgz#df30b94937e11f22d9ebdb8dbc28683262dffd74"
+  integrity sha512-d+x4+c1q9NSNSnPnCuGhch5VeTXnCce+Y0eOAnqntB+whEDXNqfxQjhSrlLMgHzlkvR8pXUrnjWcBou5qSSY1A==
   dependencies:
     "@babel/runtime" "^7.2.0"
     es6-error "^4.1.1"
