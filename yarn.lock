@@ -6370,6 +6370,13 @@ figures@^2.0.0:
   dependencies:
     escape-string-regexp "^1.0.5"
 
+figures@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/figures/-/figures-3.0.0.tgz#756275c964646163cc6f9197c7a0295dbfd04de9"
+  integrity sha512-HKri+WoWoUgr83pehn/SIgLOMZ9nAWC6dcGj26RY2R4F50u4+RTUz0RCrUlOV3nKRAICW1UGzyb+kcX2qK1S/g==
+  dependencies:
+    escape-string-regexp "^1.0.5"
+
 file-entry-cache@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/file-entry-cache/-/file-entry-cache-2.0.0.tgz#c392990c3e684783d838b8c84a45d8a048458361"
@@ -6563,15 +6570,15 @@ firebase-admin@^7.0.0:
     "@google-cloud/firestore" "^1.0.1"
     "@google-cloud/storage" "^2.3.0"
 
-firebase-ci@^0.5.2:
-  version "0.5.6"
-  resolved "https://registry.yarnpkg.com/firebase-ci/-/firebase-ci-0.5.6.tgz#53e4b8a4aaa6e6086c6576e516aa1ba980ca50cd"
-  integrity sha512-y+f3lZQPALceDbAdfu4aWpA6/BFkriCqUL89An9RIRoiBaSx5/OM8t9KptFBpgh04MBQCnXx3REeeckkgrxXZw==
+firebase-ci@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/firebase-ci/-/firebase-ci-0.6.0.tgz#a235c9a03c49e510088b31139b8a52a6b9b675bf"
+  integrity sha512-94FlrApCxy2/cc8P9o5RKuySU8BC2iil2u8Hfwa5isyeOHkGDG4PIt6+7IzsfkVrYptmPhb0ieiWCkw7BxdnYg==
   dependencies:
     chalk "^2.4.1"
     command-exists "^1.2.8"
     commander "^2.15.1"
-    figures "^2.0.0"
+    figures "^3.0.0"
     lodash "^4.17.11"
 
 firebase-tools-extra@^0.0.8:
