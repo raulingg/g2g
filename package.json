@@ -104,7 +104,7 @@
     "eslint-plugin-react": "^7.11.1",
     "firebase-ci": "^0.5.2",
     "firebase-tools": "^7.0.0",
-    "husky": "^1.2.0",
+    "husky": "^2.5.0",
     "local-web-server": "^2.6.1",
     "mocha": "^5.2.0",
     "mochawesome": "^3.1.1",
