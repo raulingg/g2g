@@ -107,7 +107,7 @@
     "husky": "^2.5.0",
     "local-web-server": "^2.6.1",
     "mocha": "^5.2.0",
-    "mochawesome": "^3.1.1",
+    "mochawesome": "^4.0.1",
     "mochawesome-merge": "^1.0.7",
     "mochawesome-report-generator": "^3.1.5",
     "node-sass": "^4.10.0",
